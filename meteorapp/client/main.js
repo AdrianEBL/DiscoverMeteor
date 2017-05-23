@@ -1,1 +1,4 @@
-Meteor.subscribe('posts');
+//Meteor.subscribe('posts');
+
+// on the client
+Meteor.subscribe('posts', 'bob-smith');
