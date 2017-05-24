@@ -1,0 +1,9 @@
+meter estos comandos en la consola del proyecto
+
+meteor add twbs:bootstrap
+meteor add underscore
+
+
+meteor remove autopublish
+
+meteor add iron:router
