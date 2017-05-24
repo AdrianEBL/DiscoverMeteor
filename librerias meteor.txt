@@ -7,3 +7,5 @@ meteor add underscore
 meteor remove autopublish
 
 meteor add iron:router
+
+* meteor add sacha:spin *
