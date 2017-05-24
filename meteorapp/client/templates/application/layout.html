@@ -30,3 +30,12 @@
     <a class="navbar-brand" href="{{pathFor 'postsList'}}">{{pageTitle}}</a>
   </div>
 </header>
+
+<template name="layout">
+  <div class="container">
+    {{> header}}
+    <div id="main">
+      {{> yield}}
+    </div>
+  </div>
+</template>
