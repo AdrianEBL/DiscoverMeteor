@@ -4,8 +4,8 @@
 //Meteor.subscribe('posts', 'bob-smith');
 
 // on the client
-Template.posts.helpers({
-  posts: function(){
-    return Posts.find({author: 'bob-smith', category: 'JavaScript'});
-  }
-});
+//Template.posts.helpers({
+ // posts: function(){
+   // return Posts.find({author: 'bob-smith', category: 'JavaScript'});
+  //}
+//});
