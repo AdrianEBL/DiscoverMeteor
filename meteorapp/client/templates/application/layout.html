@@ -1,4 +1,4 @@
- <!--<div class="container">
+ <!-- <div class="container">
     <header class="navbar navbar-default" role="navigation"> 
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Microscope</a>
@@ -8,7 +8,7 @@
       {{> postsList}}
     </div>
   </div>
-  -->
+
   
  
  <template name="layout">
@@ -16,6 +16,7 @@
     <header class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
        <!-- <a class="navbar-brand" href="/">Microscope</a> -->
+       <!-- <a class="navbar-brand" href="{{pathFor 'postsList'}}">{{pageTitle}}</a> 
         <a class="navbar-brand" href="{{pathFor 'postsList'}}">Microscope</a> 
       </div>
     </header>
@@ -23,14 +24,8 @@
       {{> yield}}
     </div>
   </div>
-</template> 
+</template>  -->
 
-<!--
-<header class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="{{pathFor 'postsList'}}">{{pageTitle}}</a>
-  </div>
-</header>
 
 <template name="layout">
   <div class="container">
@@ -41,5 +36,12 @@
   </div>
 </template>
 
+
+<!--
+<header class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="{{pathFor 'postsList'}}">{{pageTitle}}</a>
+  </div>
+</header>
 
 -->
