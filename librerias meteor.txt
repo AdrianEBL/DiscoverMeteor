@@ -8,6 +8,14 @@ meteor remove autopublish
 
 meteor add iron:router
 
+<<<<<<< HEAD
+=======
+* meteor add sacha:spin *
+
+
+----------------------------
+
+>>>>>>> 17f2ed8672e0acda916f10442c68a8ff508120e0
 meteor add ian:accounts-ui-bootstrap-3
 meteor add accounts-password
 
