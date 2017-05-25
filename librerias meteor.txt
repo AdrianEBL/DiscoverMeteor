@@ -12,3 +12,7 @@ meteor add ian:accounts-ui-bootstrap-3
 meteor add accounts-password
 
 .,./,,
+
+
+
+meteor remove insecure      new
