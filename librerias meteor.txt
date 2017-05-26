@@ -21,3 +21,12 @@ capitulo comentarios
 
 Ten en cuenta que para que se carguen los nuevos datos de prueba, es necesario ejecutar meteor reset. 
 Después de la restauración, ¡no olvides crear una nueva cuenta y volver a entrar!
+
+
+capitulo comentarios-- en este capitulo se reinica dos veces la base de datos, la primera vez es la de arriba y la 
+segunda es esta vez.
+
+ejecutar meteor reset 
+
+¡no olvides crear una nueva cuenta y volver a entrar!
+
