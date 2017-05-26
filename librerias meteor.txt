@@ -1,5 +1,6 @@
 meter estos comandos en la consola del proyecto
 
+meteor add less
 meteor add twbs:bootstrap
 meteor add underscore
 
@@ -20,7 +21,7 @@ meteor remove insecure      new
 capitulo comentarios
 
 Ten en cuenta que para que se carguen los nuevos datos de prueba, es necesario ejecutar meteor reset. 
-Después de la restauración, ¡no olvides crear una nueva cuenta y volver a entrar!
+DespuÃ©s de la restauraciÃ³n, Â¡no olvides crear una nueva cuenta y volver a entrar!
 
 
 capitulo comentarios-- en este capitulo se reinica dos veces la base de datos, la primera vez es la de arriba y la 
@@ -28,5 +29,5 @@ segunda es esta vez.
 
 ejecutar meteor reset 
 
-¡no olvides crear una nueva cuenta y volver a entrar!
+Â¡no olvides crear una nueva cuenta y volver a entrar!
 
