@@ -18,7 +18,9 @@ Router.route('/posts/:_id', {
 
 Router.route('/posts/:_id/edit', {
   name: 'postEdit',
-  data: function() { return Posts.findOne(this.params._id); }
+  data: function() {
+    console.log("..ui");
+    return Posts.findOne(this.params._id); }
 });
 
 Router.route('/submit', {name: 'postSubmit'});
