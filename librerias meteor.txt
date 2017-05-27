@@ -1,5 +1,6 @@
 ﻿meter estos comandos en la consola del proyecto
 
+meteor npm install
 meteor add less
 meteor add twbs:bootstrap
 meteor add underscore
