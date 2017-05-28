@@ -37,4 +37,4 @@ Denormalización Lectura, este tema solo es una lectura, leanlo y sigan en el si
 
 El capitulo de reactividad avanzada nos enseñará a crear fuentes de datos reactivas, además de que se creó un ejemplo
 de una fuente de datos reactiva y se habla de la comparacion de Tracker con AngularJS, pero no se agrega nada al codigo
-de la aplicación en meteor.
+de la aplicación en meteor. El siguiente capitulo será paginación.
