@@ -4,7 +4,19 @@ Router.configure({
   notFoundTemplate: 'notFound',
   waitOn: function() {
     //return Meteor.subscribe('posts');
-    return [Meteor.subscribe('posts'), Meteor.subscribe('notifications')]
+    return [Meteor.subscribe('notifications')]
+  }
+});
+
+Router.route('/:postsLimit?', {  
+  name: 'postsList',
+});
+
+Router.route('/:postsLimit?', {  
+  name: 'postsList',  
+  waitOn: function() {    
+    var limit = parseInt(this.params.postsLimit) || 5;    
+    return Meteor.subscribe('posts', {sort: {submitted: -1}, limit: limit});  
   }
 });
 
