@@ -44,6 +44,20 @@ Router.route('/posts/:_id/edit', {
 
 Router.route('/submit', {name: 'postSubmit'});
 
+Router.route('/:postsLimit?', {
+  name: 'postsList',
+  waitOn: function() {
+    var limit = parseInt(this.params.postsLimit) || 5;
+    return Meteor.subscribe('posts', {sort: {submitted: -1}, limit: limit});
+  },
+  data: function() {
+    var limit = parseInt(this.params.postsLimit) || 5;
+    return {
+      posts: Posts.find({}, {sort: {submitted: -1}, limit: limit})
+    };
+  }
+});
+
 var requireLogin = function() {
   if (! Meteor.user()) {
      if (Meteor.loggingIn()) {
