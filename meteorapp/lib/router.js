@@ -1,18 +1,17 @@
 Router.configure({
-  layoutTemplate: 'layout',
-  loadingTemplate: 'loading',
-  notFoundTemplate: 'notFound',
-  waitOn: function() {
-    //return Meteor.subscribe('posts');
-    return [Meteor.subscribe('notifications')]
-  }
-});
-
+   layoutTemplate: 'layout',
+   loadingTemplate: 'loading',
+   notFoundTemplate: 'notFound',
+   waitOn: function() { 
+     return [Meteor.subscribe('notifications')]
+   }
+ });
+ 
 PostsListController = RouteController.extend({
   template: 'postsList',
-  increment: 5,
-  postsLimit: function() {
-    return parseInt(this.params.postsLimit) || this.increment;
+  increment: 5, 
+  postsLimit: function() { 
+    return parseInt(this.params.postsLimit) || this.increment; 
   },
   findOptions: function() {
     return {sort: {submitted: -1}, limit: this.postsLimit()};
@@ -20,58 +19,50 @@ PostsListController = RouteController.extend({
   waitOn: function() {
     return Meteor.subscribe('posts', this.findOptions());
   },
-  data: function() {
-    return {posts: Posts.find({}, this.findOptions())};
-  }
-});
-
-Router.route('/:postsLimit?', {  
-  name: 'postsList',
-});
-
-Router.route('/', {name: 'postsList'});
-Router.route('/posts/:_id', {
-  name: 'postPage',
-  waitOn: function() {
-    return Meteor.subscribe('comments', this.params._id);
-  },
-  data: function() { return Posts.findOne(this.params._id); }
-});
-
-Router.route('/posts/:_id/edit', {
-  name: 'postEdit',
-  data: function() {
-    console.log("..ui");
-    return Posts.findOne(this.params._id); }
-});
-
-Router.route('/submit', {name: 'postSubmit'});
-
-Router.route('/:postsLimit?', {
-  name: 'postsList',
-  waitOn: function() {
-    var limit = parseInt(this.params.postsLimit) || 5;
-    return Meteor.subscribe('posts', {sort: {submitted: -1}, limit: limit});
+  posts: function() {
+    return Posts.find({}, this.findOptions());
   },
   data: function() {
-    var limit = parseInt(this.params.postsLimit) || 5;
+    var hasMore = this.posts().count() === this.postsLimit();
+    var nextPath = this.route.path({postsLimit: this.postsLimit() + this.increment});
     return {
-      posts: Posts.find({}, {sort: {submitted: -1}, limit: limit})
+      posts: this.posts(),
+      nextPath: hasMore ? nextPath : null
     };
   }
 });
 
-var requireLogin = function() {
-  if (! Meteor.user()) {
-     if (Meteor.loggingIn()) {
-      this.render(this.loadingTemplate);
-    } else {
-      this.render('accessDenied');
-    }
-  } else {
-    this.next();
-  }
-}
 
-Router.onBeforeAction('dataNotFound', {only: 'postPage'});
-Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
+ Router.route('/posts/:_id', {
+   name: 'postPage',
+   waitOn: function() {
+     return Meteor.subscribe('comments', this.params._id);
+   },
+   data: function() { return Posts.findOne(this.params._id); }
+ });
+ 
+ Router.route('/posts/:_id/edit', {
+   name: 'postEdit',
+   data: function() { return Posts.findOne(this.params._id); }
+ });
+ 
+ Router.route('/submit', {name: 'postSubmit'});
+ 
+ Router.route('/:postsLimit?', {
+  name: 'postsList'
+ });
+ 
+ var requireLogin = function() {
+   if (! Meteor.user()) {
+     if (Meteor.loggingIn()) {
+       this.render(this.loadingTemplate);
+     } else {
+       this.render('accessDenied');
+     }
+   } else {
+     this.next();
+   }
+ }
+ 
+ Router.onBeforeAction('dataNotFound', {only: 'postPage'});
+ Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
