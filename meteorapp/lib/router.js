@@ -8,22 +8,25 @@ Router.configure({
   }
 });
 
-Router.route('/:postsLimit?', {  
-  name: 'postsList',
+PostsListController = RouteController.extend({
+  template: 'postsList',
+  increment: 5,
+  postsLimit: function() {
+    return parseInt(this.params.postsLimit) || this.increment;
+  },
+  findOptions: function() {
+    return {sort: {submitted: -1}, limit: this.postsLimit()};
+  },
+  waitOn: function() {
+    return Meteor.subscribe('posts', this.findOptions());
+  },
+  data: function() {
+    return {posts: Posts.find({}, this.findOptions())};
+  }
 });
 
 Router.route('/:postsLimit?', {  
-  name: 'postsList',  
-  waitOn: function() {    
-    var limit = parseInt(this.params.postsLimit) || 5;    
-    return Meteor.subscribe('posts', {sort: {submitted: -1}, limit: limit});  
-  },
-  data: function() {
-    var limit = parseInt(this.params.postsLimit) || 5;
-    return {
-      posts: Posts.find({}, {sort: {submitted: -1}, limit: limit})
-    };
-  }
+  name: 'postsList',
 });
 
 Router.route('/', {name: 'postsList'});
