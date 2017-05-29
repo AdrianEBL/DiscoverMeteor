@@ -1,3 +1,4 @@
+/*
 // on the server
 //Meteor.publish('posts', function(author) {
   //return Posts.find({flagged: false, author: author});
@@ -19,7 +20,7 @@
     //date: false
   //}});
 //});
-
+*/
 Meteor.publish('posts', function(options) {
    check(options, {
      sort: Object,
@@ -27,13 +28,14 @@ Meteor.publish('posts', function(options) {
    });
    return Posts.find({}, options);
  });
-
+ 
 Meteor.publish('singlePost', function(id) {
-  check(id, String)
+  check(id, String);
   return Posts.find(id);
 });
 
-Meteor.publish('comments', function(postId) {
+
+ Meteor.publish('comments', function(postId) {
    check(postId, String);
    return Comments.find({postId: postId});
  });
