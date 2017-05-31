@@ -42,3 +42,6 @@ de la aplicación en meteor. El siguiente capitulo será paginación.
 
 AGREGAR PAQUETE 
 meteor add check
+
+AGREGAR PAQUETE 
+meteor add session
