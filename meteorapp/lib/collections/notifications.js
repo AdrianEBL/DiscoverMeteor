@@ -7,6 +7,7 @@ Notifications.allow({
   }
 });
 
+//createCommentNotification insertará una notificación para cada comentario que se haga en uno de los posts
 createCommentNotification = function(comment) {
   var post = Posts.findOne(comment.postId);
   if (comment.userId !== post.userId) {

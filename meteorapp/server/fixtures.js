@@ -60,6 +60,7 @@ if (Posts.find().count() === 0) {
     upvoters: [], votes: 0
   });
   
+    // se cargan posts para que la paginación tenga algun sentido
   for (var i = 0; i < 10; i++) {
     Posts.insert({
       title: 'Test post #' + i,

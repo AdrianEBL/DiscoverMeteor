@@ -15,6 +15,7 @@ PostsListController = RouteController.extend({
   postsLimit: function() { 
     return parseInt(this.params.postsLimit) || this.increment; 
   },
+    //findOptions devolverá un objeto con las opciones
   findOptions: function() {
     return {sort: this.sort, limit: this.postsLimit()};
   },
@@ -28,6 +29,7 @@ PostsListController = RouteController.extend({
     var self = this;
     return {
       posts: self.posts(),
+        // ready en la plantilla para mostrar un spinner al final de la lista de posts 
       ready: self.postsSub.ready,
       nextPath: function() {
         if (self.posts().count() === self.postsLimit())
@@ -40,7 +42,8 @@ PostsListController = RouteController.extend({
 // se tendra mas de una ruta logica para nextPath de PostsListController y la ponemos en NewPostsController y BestPostsController, ya que el path será diferente en uno y otro caso.
 
 NewPostsController = PostsListController.extend({
-  sort: {submitted: -1, _id: -1},
+    /* {sort: {submitted: -1} Este objeto servirá como parámetro options en la llamada en el lado del servidor. */
+  sort: {submitted: -1, _id: -1}, 
   nextPath: function() {
     return Router.routes.newPosts.path({postsLimit: this.postsLimit() + this.increment})
   }
