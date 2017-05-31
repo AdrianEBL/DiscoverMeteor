@@ -16,7 +16,7 @@ Template.postItem.helpers({
     }
   }
 });
-
+ //Creamos el ayudante upvotedClass para cambiar la clase .upvote por .upvotable, así que no podemos olvidar hacerlo también en el controlador de eventos.
 Template.postItem.events({
   'click .upvotable': function(e) {
     e.preventDefault();

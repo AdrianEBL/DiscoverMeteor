@@ -76,6 +76,8 @@ Meteor.methods({
       _id: postId, 
       upvoters: {$ne: this.userId}
     }, {
+        
+// $addToSet agrega un elemento a una lista siempre y cuando este no exista ya en ella, y $inc simplemente incrementa un entero 
       $addToSet: {upvoters: this.userId},
       $inc: {votes: 1}
     });

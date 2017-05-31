@@ -7,6 +7,8 @@ Router.configure({
   }
 });
 
+// se crea PostsListController para extenderlo con dos controladores distintos NewPostsListController y BestPostsListController.
+
 PostsListController = RouteController.extend({
   template: 'postsList',
   increment: 5, 
@@ -34,6 +36,8 @@ PostsListController = RouteController.extend({
     };
   }
 });
+
+// se tendra mas de una ruta logica para nextPath de PostsListController y la ponemos en NewPostsController y BestPostsController, ya que el path será diferente en uno y otro caso.
 
 NewPostsController = PostsListController.extend({
   sort: {submitted: -1, _id: -1},

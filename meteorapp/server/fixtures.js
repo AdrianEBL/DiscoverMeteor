@@ -1,3 +1,5 @@
+//guarda una lista de upvoters en cada post para que se sepa dónde mostrar el botón upvote a los usuarios
+
 // Fixture data 
 if (Posts.find().count() === 0) {
   var now = new Date().getTime();
