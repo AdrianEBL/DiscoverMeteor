@@ -12,9 +12,9 @@ Posts.deny({
   }
 });
 
-Posts.deny({
+Posts.deny({ //deny() nos asegurarmos de que los usuarios solo puedan editar ciertos atributos especificados
   update: function(userId, post, fieldNames, modifier) {
-    var errors = validatePost(modifier.$set);
+    var errors = validatePost(modifier.$set); //  modifier.$set contiene las mismas dos propiedades title y url que el objeto post
     return errors.title || errors.url;
   }
 });
@@ -39,7 +39,7 @@ Meteor.methods({
       url: String
     });
     
-    var errors = validatePost(postAttributes);
+    var errors = validatePost(postAttributes); 
     if (errors.title || errors.url)
       throw new Meteor.Error('invalid-post', "You must set a title and URL for your post");
     

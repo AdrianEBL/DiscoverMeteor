@@ -26,7 +26,7 @@ Template.postEdit.events({
     if (errors.title || errors.url)
       return Session.set('postEditErrors', errors);
     
-    Posts.update(currentPostId, {$set: postProperties}, function(error) {
+    Posts.update(currentPostId, {$set: postProperties}, function(error) { //$set reemplaza el conjunto de atributos dejando los demás intactos
       if (error) {
         // display the error to the user
         throwError(error.reason);
@@ -36,7 +36,7 @@ Template.postEdit.events({
     });
   },
   
-  'click .delete': function(e) {
+  'click .delete': function(e) { //elimina el evento predeterminado y después pide su confirmación
     e.preventDefault();
     
     if (confirm("Delete this post?")) {

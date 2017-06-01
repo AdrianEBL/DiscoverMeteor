@@ -77,6 +77,7 @@ Router.route('/posts/:_id', {
   data: function() { return Posts.findOne(this.params._id); }
 });
 
+//Añadiremos una ruta para acceder a la página de edición y estableceremos su contexto de datos
 Router.route('/posts/:_id/edit', {
   name: 'postEdit',
   waitOn: function() { 
